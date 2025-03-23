@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<Windows.h>
 
 int leibnz(int n);
 
@@ -16,9 +17,9 @@ int leibnz(int n)
 
 }
 
-int main(void);
+int main();
 
-int main(void)
+int main()
 {
     int n;
     double pi=1;
@@ -30,6 +31,7 @@ int main(void)
     for (int i = 0; i<n; i++)
         pi=pi+(1.0/leibnz(i+1));
     pi=pi*4;
-    printf("%f", pi);
+    printf("%f", pi); 
+    Sleep(1000);
     return 0;
 }
