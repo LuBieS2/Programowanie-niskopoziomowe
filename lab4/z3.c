@@ -11,7 +11,7 @@ int main(void);
 
 int main(void) {
    int i, n, v;
-   struct Elem* b = NULL, * p = NULL, *e;
+   struct Elem* b = NULL, * p = NULL, *e, *nxt=NULL;
 
    printf("Podaj dlugosc listy > ");
    (void)scanf("%d", &n);
@@ -34,16 +34,15 @@ int main(void) {
       printf("%d ", e->val);
       e = e->next;
    }
-   p = (struct Elem*)malloc(sizeof(Elem));
-   p->val = v;
-   struct Elem *prev = NULL, *current = b, *next = NULL;
-   while (current != NULL) {
-      next = current->next;
-      current->next = prev;
-      prev = current;
-      current = next;
+   p=NULL;
+   e=b;
+   while (e) {
+      nxt = e->next;
+      e->next = p;
+      p = e;
+      e = nxt;
    }
-   b=prev;
+   b=p;
    e = b;
    printf("\n\nLista odwrocona: ");
    while (e) {
